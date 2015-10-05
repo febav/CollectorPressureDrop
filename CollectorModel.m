@@ -75,6 +75,7 @@ itmax=40;           % max number of iterations
 itend=itmax;
 tolFlow=1e-5;       % tolerance for flow convergence
 tolDp=1e-4;         % tolerance for pressure convergence
+tolLastTee=1e-4;    % tolerance for mass conservation in last tee junction
 ReR=zeros(Np,1);    % [-] Reynolds number, R postscript refers to absorber pipe
 fR=zeros(Np,1);     % [-] Darcy friction factor, // 
 YR=zeros(Np,1);     % [1/kg.m] resist. coeff.,   //
@@ -183,6 +184,11 @@ while it<=itmax
       MoldC(jj)=MoldC(jj-1)-MoldR(jj-1);
     end
   end
+end
+
+%  check on respect of mass conservation in last tee junction
+if abs(MoldR(end)-MoldC(end))/abs(MoldC(end))>tolLastTee
+    error('Mass conservation is violeted in the last tee junction')
 end
 
 %   print max relative error and iteration count
