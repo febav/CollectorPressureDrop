@@ -35,10 +35,7 @@ Qratio=Q_s./Q_c;
 Fratio=F_s./F_c;
 
 if F_s+F_st>F_c & F_st==F_c     
-        Aprime=(Fratio<=0.35).*(Qratio<=0.4).*(1.1-0.7*Qratio)+...
-            (Fratio<=0.35).*(Qratio>0.4)*0.85+...
-            (Fratio>0.35).*(Qratio<=0.6).*(1-0.6*Qratio)+...
-            (Fratio>0.35).*(Qratio>0.6)*0.6;
+        Aprime=1;
         Kprime_s=0;
         %     elseif F_s+F_st==F_c
         %         Aprime(i)=1;
