@@ -46,7 +46,7 @@ end
 Z_DSiT=Aprime.*(1+wratio.^2)-Kprime_s.*wratio.^2; % [-] turbulent res.coef. by Idelchick
 k1=(Qratio<=0.6).*(0.9+Qratio)+(Qratio>0.6).*(1.5-(Qratio-0.6)/2);
 Z_DSiL=(k1+1).*Z_DSiT+150./ReC; % [-] laminar res.coef. by Idelchick
-Z_DSiL=Z_DSiL*1.11; % correction from Parasol report
+Z_DSiL=Z_DSiL*1.; % correction from Parasol report
 Z_DSi=(ReC>=ReT).*Z_DSiT+...
       (ReC<=ReL).*Z_DSiL+...
       (ReC>ReL).*(ReC<ReT).*(Z_DSiL+(ReC-ReL)/(ReT-ReL).*(Z_DSiT-Z_DSiL));
